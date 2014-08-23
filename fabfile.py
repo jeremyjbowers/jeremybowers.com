@@ -24,3 +24,4 @@ def write_wine_json():
 
 @task
 def deploy_wine_data():
+  pass
