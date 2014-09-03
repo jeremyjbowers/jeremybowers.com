@@ -5,132 +5,52 @@
   <meta name="viewport" content="initial-scale = 0.7,maximum-scale = 1.0" />
   <title>Jeremy Bowers: Web Developer</title>
   <link rel="shortcut icon" href="https://s3.amazonaws.com/jeremybowerscom/images/favicon.ico">
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,600,700,800' rel='stylesheet' type='text/css'>
   <style type="text/css">
     * {
       margin: 0;
       padding: 0;
     }
     body {
-      font-family: 'Open Sans', sans-serif;
-      font-weight: 300;
-      color: #777;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 800;
+      color: #333;
       text-align: left;
-      padding: 0 20px;
-      font-size: 66px;
+      background-color: #00A05B;
+      padding: 0 60px;
+      font-size: 60px;
       line-height: 80px;
     }
-    h1 {
-      padding:10px 0;
-      font-size:48px;
-      line-height:50px;
+    @media (max-width: 1300px) {
+      body {
+        font-size: 45px;
+        padding: 0 40px;
+        line-height: 60px;
+      }
     }
-    h2 {
-      padding:10px 0;
-      font-size:32px;
-      line-height:34px;
+    @media (max-width: 720px) {
+      body {
+        font-size: 35px;
+        padding: 0 20px;
+        line-height: 45px;
+      }
     }
-    .blue { color: #3366cc; }
-    .green { color: #95C718; }
-    .paleblue { color: #A9DAF8; }
-    .oranje { color: #DF5D39; }
-    .cadet { color: #97C3C2; }
-    .magenta { color: #D13870; }
-    .grey { color:#666; }
     p {
       margin: 15px 0;
     }
     a {
-      text-decoration: none;
-      color: #333;
-      font-weight: 400;
+      text-decoration: underline;
+      color: #fff;
     }
     a:hover {
       text-decoration: none;
-      color: #ff3300;
-    }
-    ul.table {
-      font-size:16px;
-      line-height:18px;
-    }
-    ul.table li {
-      display:block;
-      float:left;
-     width:360px;
-      padding:10px 10px 5px 10px;
-      margin:10px;
-      height:130px;
-      background-color: #f0f3f3;
-      border-bottom: 10px solid;
-    }
-    ul.table li span {
-      display:block;
-      float:left;
-      width:50px;
-      padding:2px;
-      font-size:14px;
-      line-height:16px;
-      text-align: center;
-    }
-    ul.table li span.text {
-      float:right;
-      width:290px;
-      text-align:center;
-      height:100%;
-      border-left:1px solid #ccc;
-      font-size:24px;
-      line-height:26px;
-    }
-    ul.table li span.score {
-      font-weight:bold;
-      font-size:26px;
-      line-height:46px;
-      color:#666;
-    }
-    li.header {
-      font-weight:bold;
-    }
-    .legend {
-      margin:0 0 0 5px;
-      width:380px;
-    }
-    .legend p {
-      border-left:16px solid #fff;
-      font-size:11px;
-      font-weight:normal;
-      color:#aaa;
-      line-height:16px;
-      text-indent:5px;
-      display:block;
-      float:left;
-      margin:0 4px;
-      padding:none;
-    }
-    .legend .white { border-color:#E3F2BD; }
-    .legend .orange { border-color:#FFE181; }
-    .legend .red { border-color:#7E1C13; }
-    .legend .sparkling { border-color:#A6F6AF; }
-    .legend .dessert { border-color:#D0E0EB; }
-    .legend .pink { border-color:#FCD9E5; }
-
-    ul.table li.white { border-color:#E3F2BD; }
-        ul.table li.orange { border-color:#FFE181; }
-    ul.table li.red { border-color:#7E1C13; }
-    ul.table li.sparkling { border-color:#A6F6AF; }
-    ul.table li.dessert { border-color:#D0E0EB; }
-    ul.table li.pink { border-color:#FCD9E5; }
-    .clearfix:after {
-      content: ".";
-      display: block;
-      height: 0;
-      clear: both;
-      visibility: hidden;
     }
   </style>
 </head>
 <body>
   <div id="main">
     <div class="row">
+      <p class="title"></p>
       <p>I am a developer at <span class="blue">The New York Times</span> on the Interactive News desk. Previously, I was a news applications developer for <span class="blue">NPR</span> on the <a href="http://blog.apps.npr.org/">news applications</a> team. Most of that code is available for your perusal on <a href="http://github.com/nprapps/">GitHub</a>, because I like to <a href="http://blog.apps.chicagotribune.com/2011/09/02/show-your-work/">show my work</a>. Before NPR, I worked at the <span class="blue">Washington Post</span> in Washington, D.C. I built a handful of <a href="http://apps.washingtonpost.com/sports/status/">APIs</a> and some <a href="http://apps.washingtonpost.com/national/fallen/">news applications</a>. I even got to help <a href="http://source.mozillaopennews.org/en-US/learning/predicting-future-elections-edition/">predict an election.</a> Before the Post, I worked at the <span class="blue">St. Petersburg Times</span> in Florida. I contributed code to the Pulitzer Prize-winning <a href="http://www.politifact.com/">PolitiFact</a>, a data-driven <a href="http://www.tampabay.com/mugshots/">mug shots site</a> and a <a href="http://www.tampabay.com/hometeam/">high-school sports site</a>. I write about food on <a href="http://www.twitter.com/@jeremybowers">Twitter</a> and code socially on <a href="http://github.com/jeremyjbowers">GitHub</a>. I track the wines I drink (<a href="https://docs.google.com/spreadsheet/pub?key=0AjWpFWKpoFHqdEgxVVFiREU1bGpHa0RMT1RRMXU0aHc&amp;output=csv">raw csv</a> | <a href="https://jeremybowers.com/wine/wine.json">json</a>) for amusement.</p>
     </div>
   </div>
