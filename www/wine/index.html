@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Wines</title>
+
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <style>
+        span.wine { display: inline-block; background-color: #ccc; }
+        span.wine.orange { background-color: #fee391; }
+        span.wine.red { background-color: #980043; }
+        span.wine.sparkling { background-color: #c7e9c0; }
+        span.wine.white { background-color: #ffffcc; }
+        span.wine.dessert, span.wine.sherry { background-color: #41b6c4; }
+        span.wine.pink { background-color: #fa9fb5; }
+        #wine-rating-by-type { padding-bottom: 0; padding-top:0;}
+        #wine-rating-by-type-ticks { margin: 0; padding-top: 0; padding-bottom: 0; line-height: 8px; font-size: 8px;}
+        #wine-rating-by-type-labels { margin: 0; padding-top: 0; padding-bottom: 0;}
+        #wine-rating-by-type-ticks span { display: block; float:left; font-size: 5px; line-height:5px; text-align: center; border-left: 1px solid #aaa; border-right:1px solid #aaa; }
+        #wine-rating-by-type-labels span { display: block; float:left; font-size: 11px; line-height:20px; text-align: center; border-top: 1px solid #aaa; }
+        #wine-rating-by-type-labels2 span { display: block; float:left; font-size: 11px; line-height:13px; text-align: center; border-top: 0px solid #aaa; }
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="container">
+        <div class="row">
+            <h2>Wines by quarter</h2>
+            <div class="col-md-12" id="wine-rating-by-type"></div>
+            <div class="col-md-12" id="wine-rating-by-type-ticks"></div>
+            <div class="col-md-12" id="wine-rating-by-type-labels"></div>
+            <div class="col-md-12" id="wine-rating-by-type-labels2"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" id="wine-rating-by-price"></div>
+        </div>
+    </div>
+    <script src="../js/jquery.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script> -->
+    <script>
+    (function($){
+        WINES = [];
+        PAYLOAD = [];
+        var draw_type_chart = function(PAYLOAD) {
+            var $target = $('#wine-rating-by-type');
+            var $ticks = $('#wine-rating-by-type-ticks');
+            var $labels = $('#wine-rating-by-type-labels');
+            var $labels2 = $('#wine-rating-by-type-labels2');
+            var LABELS = {}
+            $.each(PAYLOAD, function(idx, wine){
+                var WINE_HTML = '<span class="wine '+wine.wine_type.toLowerCase()
+                WINE_HTML += '" style="height: '+wine.score*10+'px;"';
+                WINE_HTML += ' data_year="'+wine.consumed.year+'" data_quarter="'+wine.consumed.quarter+'"';
+                WINE_HTML += '></span>';
+                $target.append(WINE_HTML);
+                if (!(wine.consumed.year in LABELS)){
+                    LABELS[wine.consumed.year] = {}
+                    LABELS[wine.consumed.year][wine.consumed.quarter] = 1;
+                } else {
+                    if (!(wine.consumed.quarter in LABELS[wine.consumed.year])){
+                        LABELS[wine.consumed.year][wine.consumed.quarter] = 1;
+                    } else {
+                        LABELS[wine.consumed.year][wine.consumed.quarter] += 1;
+                    }
+                }
+            });
+            var WIDTH = $target.width();
+            $('span.wine').css('width', WIDTH / PAYLOAD.length);
+            var years = Object.keys(LABELS);
+            var quarters = ["Winter","Spring","Summer","Fall"];
+            $.each(years, function(i, year){
+                $.each(quarters, function(z, quarter){
+                    if (LABELS[year][quarter]){
+                        var label_width = (WIDTH / PAYLOAD.length)*LABELS[year][quarter];
+                        var color = 'red';
+                        var label_text2 = quarter+'&nbsp;'+year
+                        var label_text = '&nbsp;';
+                        if (z % 2 == 0){
+                            color = 'blue';
+                            label_text = quarter+'&nbsp;'+year;
+                            label_text2 = '&nbsp;';
+                        }
+                        $ticks.append('<span style="width:'+label_width+'px; border-color:'+color+';">&nbsp;</span>');
+                        $labels2.append('<span style="width:'+label_width+'px; border-color:'+color+';">'+label_text2+'</span>');
+                        $labels.append('<span style="width:'+label_width+'px; border-color:'+color+';">'+label_text+'</span>');
+                    }
+                });
+            });
+        }
+        var load_wines = function() { $.getJSON( "wine.json", function(wines) { format_wines(wines); }); }
+        var format_wines = function(wines) {
+            var avg_cost = 0.0;
+            var avg_score = 0.0;
+            var cost_num_wines = wines.length;
+            var score_num_wines = 0;
+
+            $.each(wines, function(idx, wine){
+                wine['cost'] = parseFloat(wine['cost'].split('$')[1]);
+                wine['score'] = parseFloat(wine['score']);
+                wine['grapes'] = wine['grapes'].split('\n');
+                wine['bottle_text'] = wine['bottle_text'].split('\n');
+                WINES.push(wine);
+                avg_cost += wine['cost'];
+
+                if (!isNaN(wine['score'])) {
+                    avg_score += wine['score'];
+                    score_num_wines += 1;
+                }
+            });
+
+            avg_cost = parseFloat(avg_cost / cost_num_wines);
+            avg_score = parseFloat(avg_score / score_num_wines);
+
+            var make_quarter = function(month){
+                month = parseInt(month);
+                var quarter;
+                if (month < 4) { quarter = 'Winter'; }
+                if (month > 9) { quarter = 'Fall'; }
+                if (month > 6 && month < 10) { quarter = 'Summer'; }
+                if (month > 3 && month < 7){ quarter = 'Spring'; }
+                return quarter;
+            };
+
+            $.each(WINES, function(idx, wine){
+                if (!isNaN(wine['score'])) {
+                    wine['score+'] = wine['score'] - avg_score;
+                    wine['cost+'] = wine['cost'] - avg_cost;
+                    var date_split = wine['consumed'].split('/');
+                    var year = date_split[2].split('20')[1]
+                    var month = date_split[0]
+                    wine['consumed'] = {"year": year, "quarter": make_quarter(month) }
+                    PAYLOAD.push(wine);
+                }
+            });
+            draw_type_chart(PAYLOAD);
+        }
+        load_wines();
+    })(jQuery);
+    </script>
+  </body>
+</html>
