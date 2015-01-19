@@ -4,23 +4,27 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Wines</title>
+    <title>Wine bottles</title>
 
     <link rel="stylesheet" href="../css/bootstrap.min.css" />
     <style>
-        span.wine { display: inline-block; background-color: #ccc; }
-        span.wine.orange { background-color: #fee391; }
-        span.wine.red { background-color: #980043; }
-        span.wine.sparkling { background-color: #c7e9c0; }
-        span.wine.white { background-color: #ffffcc; }
-        span.wine.dessert, span.wine.sherry { background-color: #41b6c4; }
-        span.wine.pink { background-color: #fa9fb5; }
+        #wine-rating-by-type-key {margin: 0 0 10px; padding-bottom: 10px; }
+        #wine-rating-by-type-key span { display: inline-block; line-height: 20px; font-size: 12px; margin-right: 10px;}
+        #wine-rating-by-type-key span.key { width: 8px; line-height:20px; text-indent: -99999px; margin-right: 0px;}
+
+        span.wine { display: inline-block; background-color: #fff; }
+        span.orange { background-color: #fee391; }
+        span.red { background-color: #980043; }
+        span.sparkling { background-color: #c7e9c0; }
+        span.white { background-color: #ffffcc; }
+        span.dessert, span.wine.sherry { background-color: #41b6c4; }
+        span.pink { background-color: #fa9fb5; }
         #wine-rating-by-type { padding-bottom: 0; padding-top:0;}
         #wine-rating-by-type-ticks { margin: 0; padding-top: 0; padding-bottom: 0; line-height: 8px; font-size: 8px;}
         #wine-rating-by-type-labels { margin: 0; padding-top: 0; padding-bottom: 0;}
-        #wine-rating-by-type-ticks span { display: block; float:left; font-size: 5px; line-height:5px; text-align: center; border-left: 1px solid #aaa; border-right:1px solid #aaa; }
-        #wine-rating-by-type-labels span { display: block; float:left; font-size: 11px; line-height:20px; text-align: center; border-top: 1px solid #aaa; }
-        #wine-rating-by-type-labels2 span { display: block; float:left; font-size: 11px; line-height:13px; text-align: center; border-top: 0px solid #aaa; }
+        #wine-rating-by-type-ticks span { display: block; float:left; font-size: 4px; line-height:4px; text-align: center; border-left: 1px solid #aaa; border-right:1px solid #aaa; margin: 0 1px;}
+        #wine-rating-by-type-labels span { display: block; float:left; font-size: 11px; line-height:20px; text-align: center; border-top: 1px solid #999; margin: 0 1px;}
+        #wine-rating-by-type-labels2 span { display: block; float:left; font-size: 11px; line-height:13px; text-align: center; border-top: 0px solid #999; }
     </style>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,7 +36,21 @@
   <body>
     <div class="container">
         <div class="row">
-            <h2>Wines by quarter</h2>
+            <h2>Recorded bottles by quarter</h2>
+            <div class="col-md-12" id="wine-rating-by-type-key">
+                <span class="red key">&nbsp;</span>
+                <span>Red</span>
+                <span class="white key">&nbsp;</span>
+                <span>White</span>
+                <span class="orange key">&nbsp;</span>
+                <span>Orange</span>
+                <span class="pink key">&nbsp;</span>
+                <span>Pink</span>
+                <span class="sparkling key">&nbsp;</span>
+                <span>Sparkling</span>
+                <span class="dessert key">&nbsp;</span>
+                <span>Dessert</span>
+            </div>
             <div class="col-md-12" id="wine-rating-by-type"></div>
             <div class="col-md-12" id="wine-rating-by-type-ticks"></div>
             <div class="col-md-12" id="wine-rating-by-type-labels"></div>
@@ -78,18 +96,16 @@
             $.each(years, function(i, year){
                 $.each(quarters, function(z, quarter){
                     if (LABELS[year][quarter]){
-                        var label_width = (WIDTH / PAYLOAD.length)*LABELS[year][quarter];
-                        var color = 'red';
+                        var label_width = ((WIDTH / PAYLOAD.length)*LABELS[year][quarter]);
                         var label_text2 = quarter+'&nbsp;'+year
                         var label_text = '&nbsp;';
                         if (z % 2 == 0){
-                            color = 'blue';
                             label_text = quarter+'&nbsp;'+year;
                             label_text2 = '&nbsp;';
                         }
-                        $ticks.append('<span style="width:'+label_width+'px; border-color:'+color+';">&nbsp;</span>');
-                        $labels2.append('<span style="width:'+label_width+'px; border-color:'+color+';">'+label_text2+'</span>');
-                        $labels.append('<span style="width:'+label_width+'px; border-color:'+color+';">'+label_text+'</span>');
+                        $ticks.append('<span style="width:'+(label_width-2)+'px;">&nbsp;</span>');
+                        $labels.append('<span style="width:'+(label_width-2)+'px;">'+label_text+'</span>');
+                        $labels2.append('<span style="width:'+label_width+'px;">'+label_text2+'</span>');
                     }
                 });
             });
