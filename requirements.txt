@@ -1,14 +1,14 @@
+ecdsa==0.11
 Fabric==1.9.0
 Flask==0.10.1
-Jinja2==2.7.3
-MarkupSafe==0.23
-Werkzeug==0.9.6
-ecdsa==0.11
 gnureadline==6.3.3
 -e git+git@github.com:jeremyjbowers/gspread.git@687fbfa1e92ff0a1e896b26da3039ec987a83016#egg=gspread-master
 ipython==2.1.0
 itsdangerous==0.24
+Jinja2==2.7.3
+MarkupSafe==0.23
 paramiko==1.14.0
 pycrypto==2.6.1
 requests==2.3.0
-wsgiref==0.1.2
+termcolor==1.1.0
+Werkzeug==0.9.6
