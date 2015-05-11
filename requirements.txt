@@ -2,7 +2,7 @@ ecdsa==0.11
 Fabric==1.9.0
 Flask==0.10.1
 gnureadline==6.3.3
--e git+git@github.com:jeremyjbowers/gspread.git@687fbfa1e92ff0a1e896b26da3039ec987a83016#egg=gspread-master
+gspread==0.2.5
 ipython==2.1.0
 itsdangerous==0.24
 Jinja2==2.7.3
