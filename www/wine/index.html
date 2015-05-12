@@ -12,13 +12,16 @@
         #wine-rating-by-type-key span { display: inline-block; line-height: 20px; font-size: 12px; margin-right: 10px;}
         #wine-rating-by-type-key span.key { width: 8px; line-height:20px; text-indent: -99999px; margin-right: 0px;}
 
-        span.wine { display: inline-block; background-color: #fff; }
-        span.orange { background-color: #fee391; }
-        span.red { background-color: #980043; }
-        span.sparkling { background-color: #c7e9c0; }
-        span.white { background-color: #ffffcc; }
-        span.dessert, span.wine.sherry { background-color: #41b6c4; }
-        span.pink { background-color: #fa9fb5; }
+        img.wine-by-type { width:100%; }
+
+        span.wine { display: inline-block; background-color: #fff;}
+        span.orange { background-color: #e8b80f;  opacity: 0.5;}
+        span.red { background-color: #eb163d;  opacity: 0.5;}
+        span.sparkling { background-color: #2df00d;  opacity: 0.5;}
+        span.white { background-color: #c8f5f5;  opacity: 0.5;}
+        span.dessert { background-color: #1c52de;  opacity: 0.5;}
+        span.sherry { background-color: #705614;  opacity: 0.5;}
+        span.pink { background-color: #d992b8;  opacity: 0.5;}
         #wine-rating-by-type { padding-bottom: 0; padding-top:0;}
         #wine-rating-by-type-ticks { margin: 0; padding-top: 0; padding-bottom: 0; line-height: 8px; font-size: 8px;}
         #wine-rating-by-type-labels { margin: 0; padding-top: 0; padding-bottom: 0;}
@@ -36,7 +39,7 @@
   <body>
     <div class="container">
         <div class="row">
-            <h2>Recorded bottles by quarter</h2>
+            <h2>Bottles by quarter and type</h2>
             <div class="col-md-12" id="wine-rating-by-type-key">
                 <span class="red key">&nbsp;</span>
                 <span>Red</span>
@@ -50,6 +53,8 @@
                 <span>Sparkling</span>
                 <span class="dessert key">&nbsp;</span>
                 <span>Dessert</span>
+                <span class="sherry key">&nbsp;</span>
+                <span>Sherry</span>
             </div>
             <div class="col-md-12" id="wine-rating-by-type"></div>
             <div class="col-md-12" id="wine-rating-by-type-ticks"></div>
@@ -57,8 +62,164 @@
             <div class="col-md-12" id="wine-rating-by-type-labels2"></div>
         </div>
         <div class="row">
-            <div class="col-md-12" id="wine-rating-by-price"></div>
+            <h2>Bottles by type and region</h2>
+            <div class="col-md-12">
+                <svg width="1000" height="1020" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(0,10)">
+                        <g>
+                            <path class="link" d="M2,117.06896551724138C500,117.06896551724138 500,92.06896551724138 998,92.06896551724138" style="stroke-width: 184.137931034483px; fill: none; stroke: rgb(200, 245, 245); stroke-opacity: 0.4;"></path>
+                            <path class="link" d="M2,755.7471264367816C500,755.7471264367816 500,245.51724137931035 998,245.51724137931035" style="stroke-width: 81.8390804597701px; fill: none; stroke: rgb(217, 146, 184); stroke-opacity: 0.4;"></path>
+                            <path class="link" d="M2,612.7586206896551C500,612.7586206896551 500,475.4597701149425 998,475.4597701149425" style="stroke-width: 81.8390804597701px; fill: none; stroke: rgb(235, 22, 61); stroke-opacity: 0.4;"></path>
+                            <path class="link" d="M2,385.3735632183908C500,385.3735632183908 500,396.17816091954023 998,396.17816091954023" style="stroke-width: 76.7241379310345px; fill: none; stroke: rgb(232, 184, 15); stroke-opacity: 0.4;"></path>
+                            <path class="link" d="M2,477.44252873563215C500,477.44252873563215 500,820.028735632184 998,820.028735632184" style="stroke-width: 56.264367816092px; fill: none; stroke: rgb(232, 184, 15); stroke-opacity: 0.4;"></path>
+                            <path class="link" d="M2,237.27011494252875C500,237.27011494252875 500,329.68390804597703 998,329.68390804597703" style="stroke-width: 56.264367816092px; fill: none; stroke: rgb(200, 245, 245); stroke-opacity: 0.4;"></path>
+                            <path class="link" d="M2,835.028735632184C500,835.028735632184 500,717.9597701149427 998,717.9597701149427" style="stroke-width: 35.8045977011494px; fill: none; stroke: rgb(217, 146, 184); stroke-opacity: 0.4;"></path>
+                            <path class="link" d="M2,885.948275862069C500,885.948275862069 500,753.7643678160921 998,753.7643678160921" style="stroke-width: 35.8045977011494px; fill: none; stroke: rgb(112, 86, 20); stroke-opacity: 0.4;"></path>
+                            <path class="link" d="M2,280.7471264367816C500,280.7471264367816 500,567.2988505747127 998,567.2988505747127" style="stroke-width: 30.6896551724138px; fill: none; stroke: rgb(200, 245, 245); stroke-opacity: 0.4;"></path>
+                            <path class="link" d="M2,436.5229885057471C500,436.5229885057471 500,595.4310344827587 998,595.4310344827587" style="stroke-width: 25.5747126436782px; fill: none; stroke: rgb(232, 184, 15); stroke-opacity: 0.4;"></path>
+                            <path class="link" d="M2,686.9252873563219C500,686.9252873563219 500,687.2701149425288 998,687.2701149425288" style="stroke-width: 25.5747126436782px; fill: none; stroke: rgb(235, 22, 61); stroke-opacity: 0.4;"></path>
+                            <path class="link" d="M2,561.6091954022988C500,561.6091954022988 500,194.367816091954 998,194.367816091954" style="stroke-width: 20.4597701149425px; fill: none; stroke: rgb(235, 22, 61); stroke-opacity: 0.4;"></path>
+                            <path class="link" d="M2,663.9080459770115C500,663.9080459770115 500,618.4482758620691 998,618.4482758620691" style="stroke-width: 20.4597701149425px; fill: none; stroke: rgb(235, 22, 61); stroke-opacity: 0.4;"></path>
+                            <path class="link" d="M2,929.1954022988505C500,929.1954022988505 500,644.0229885057472 998,644.0229885057472" style="stroke-width: 20.4597701149425px; fill: none; stroke: rgb(28, 82, 222); stroke-opacity: 0.4;"></path>
+                            <path class="link" d="M2,513.2471264367816C500,513.2471264367816 500,881.1781609195403 998,881.1781609195403" style="stroke-width: 15.3448275862069px; fill: none; stroke: rgb(232, 184, 15); stroke-opacity: 0.4;"></path>
+                            <path class="link" d="M2,528.5919540229885C500,528.5919540229885 500,931.8678160919541 998,931.8678160919541" style="stroke-width: 15.3448275862069px; fill: none; stroke: rgb(232, 184, 15); stroke-opacity: 0.4;"></path>
+                            <path class="link" d="M2,804.3390804597701C500,804.3390804597701 500,524.051724137931 998,524.051724137931" style="stroke-width: 15.3448275862069px; fill: none; stroke: rgb(217, 146, 184); stroke-opacity: 0.4;"></path>
+                            <path class="link" d="M2,969.8850574712643C500,969.8850574712643 500,659.3678160919541 998,659.3678160919541" style="stroke-width: 10.2298850574713px; fill: none; stroke: rgb(45, 240, 13); stroke-opacity: 0.4;"></path>
+                            <path class="link" d="M2,311.4367816091954C500,311.4367816091954 500,868.3908045977012 998,868.3908045977012" style="stroke-width: 10.2298850574713px; fill: none; stroke: rgb(200, 245, 245); stroke-opacity: 0.4;"></path>
+                            <path class="link" d="M2,301.2068965517241C500,301.2068965517241 500,786.7816091954023 998,786.7816091954023" style="stroke-width: 10.2298850574713px; fill: none; stroke: rgb(200, 245, 245); stroke-opacity: 0.4;"></path>
+                            <path class="link" d="M2,321.6666666666667C500,321.6666666666667 500,903.9655172413793 998,903.9655172413793" style="stroke-width: 10.2298850574713px; fill: none; stroke: rgb(200, 245, 245); stroke-opacity: 0.4;"></path>
+                            <path class="link" d="M2,334.45402298850576C500,334.45402298850576 500,982.3275862068964 998,982.3275862068964" style="stroke-width: 5.11494252873563px; fill: none; stroke: rgb(200, 245, 245); stroke-opacity: 0.4;"></path>
+                            <path class="link" d="M2,916.4080459770114C500,916.4080459770114 500,534.2816091954022 998,534.2816091954022" style="stroke-width: 5.11494252873563px; fill: none; stroke: rgb(28, 82, 222); stroke-opacity: 0.4;"></path>
+                            <path class="link" d="M2,538.8218390804597C500,538.8218390804597 500,967.2126436781608 998,967.2126436781608" style="stroke-width: 5.11494252873563px; fill: none; stroke: rgb(232, 184, 15); stroke-opacity: 0.4;"></path>
+                            <path class="link" d="M2,329.3390804597701C500,329.3390804597701 500,952.0977011494252 998,952.0977011494252" style="stroke-width: 5.11494252873563px; fill: none; stroke: rgb(200, 245, 245); stroke-opacity: 0.4;"></path>
+                            <path class="link" d="M2,941.9827586206895C500,941.9827586206895 500,997.442528735632 998,997.442528735632" style="stroke-width: 5.11494252873563px; fill: none; stroke: rgb(28, 82, 222); stroke-opacity: 0.4;"></path>
+                            <path class="link" d="M2,814.5689655172413C500,814.5689655172413 500,631.235632183908 998,631.235632183908" style="stroke-width: 5.11494252873563px; fill: none; stroke: rgb(217, 146, 184); stroke-opacity: 0.4;"></path>
+                            <path class="link" d="M2,855.4885057471264C500,855.4885057471264 500,911.6379310344828 998,911.6379310344828" style="stroke-width: 5.11494252873563px; fill: none; stroke: rgb(217, 146, 184); stroke-opacity: 0.4;"></path>
+                            <path class="link" d="M2,957.0977011494252C500,957.0977011494252 500,288.9942528735632 998,288.9942528735632" style="stroke-width: 5.11494252873563px; fill: none; stroke: rgb(45, 240, 13); stroke-opacity: 0.4;"></path>
+                            <path class="link" d="M2,962.2126436781608C500,962.2126436781608 500,539.3965517241379 998,539.3965517241379" style="stroke-width: 5.11494252873563px; fill: none; stroke: rgb(45, 240, 13); stroke-opacity: 0.4;"></path>
+                            <path class="link" d="M2,702.2701149425287C500,702.2701149425287 500,850.7183908045978 998,850.7183908045978" style="stroke-width: 5.11494252873563px; fill: none; stroke: rgb(235, 22, 61); stroke-opacity: 0.4;"></path>
+                        </g>
+                        <g>
+                            <g class="node" transform="translate(998,924.1954022988506)">
+                                <rect height="15.344827586206897" width="2" style="fill: rgb(102, 102, 102);">
+                                    <title>Croatia 3</title>
+                                </rect>
+                                <text x="-6" y="7.672413793103448" dy=".35em" text-anchor="end" style="font-size:16px; font-weight: bold; pointer-events: none;">Croatia</text>
+                            </g>
+                            <g class="node" transform="translate(998,0)">
+                                <rect height="291.55172413793105" width="2" style="fill: rgb(102, 102, 102);">
+                                    <title>France 57</title>
+                                </rect>
+                                <text x="-6" y="145.77586206896552" dy=".35em" text-anchor="end" style="font-size:16px; font-weight: bold; pointer-events: none;">France</text>
+                            </g>
+                            <g class="node" transform="translate(998,781.6666666666667)">
+                                <rect height="71.60919540229885" width="2" style="fill: rgb(102, 102, 102);">
+                                    <title>Georgia 14</title>
+                                </rect>
+                                <text x="-6" y="35.804597701149426" dy=".35em" text-anchor="end" style="font-size:16px; font-weight: bold; pointer-events: none;">Georgia</text>
+                            </g>
+                            <g class="node" transform="translate(998,898.8505747126437)">
+                                <rect height="15.344827586206897" width="2" style="fill: rgb(102, 102, 102);">
+                                    <title>Germany 3</title>
+                                </rect>
+                                <text x="-6" y="7.672413793103448" dy=".35em" text-anchor="end" style="font-size:16px; font-weight: bold; pointer-events: none;">Germany</text>
+                            </g>
+                            <g class="node" transform="translate(998,949.5402298850574)">
+                                <rect height="5.114942528735632" width="2" style="fill: rgb(102, 102, 102);">
+                                    <title>Greece 1</title>
+                                </rect>
+                                <text x="-6" y="2.557471264367816" dy=".35em" text-anchor="end" style="font-size:16px; font-weight: bold; pointer-events: none;">Greece</text>
+                            </g>
+                            <g class="node" transform="translate(998,964.655172413793)">
+                                <rect height="5.114942528735632" width="2" style="fill: rgb(102, 102, 102);">
+                                    <title>Hungary 1</title>
+                                </rect>
+                                <text x="-6" y="2.557471264367816" dy=".35em" text-anchor="end" style="font-size:16px; font-weight: bold; pointer-events: none;">Hungary</text>
+                            </g>
+                            <g class="node" transform="translate(998,301.55172413793105)">
+                                <rect height="240.4022988505747" width="2" style="fill: rgb(102, 102, 102);">
+                                    <title>Italy 47</title>
+                                </rect>
+                                <text x="-6" y="120.20114942528735" dy=".35em" text-anchor="end" style="font-size:16px; font-weight: bold; pointer-events: none;">Italy</text>
+                            </g>
+                            <g class="node" transform="translate(998,979.7701149425286)">
+                                <rect height="5.114942528735632" width="2" style="fill: rgb(102, 102, 102);">
+                                    <title>New Zealand 1</title>
+                                </rect>
+                                <text x="-6" y="2.557471264367816" dy=".35em" text-anchor="end" style="font-size:16px; font-weight: bold; pointer-events: none;">New Zealand</text>
+                            </g>
+                            <g class="node" transform="translate(998,994.8850574712642)">
+                                <rect height="5.114942528735632" width="2" style="fill: rgb(102, 102, 102);">
+                                    <title>Portugal 1</title>
+                                </rect>
+                                <text x="-6" y="2.557471264367816" dy=".35em" text-anchor="end" style="font-size:16px; font-weight: bold; pointer-events: none;">Portugal</text>
+                            </g>
+                            <g class="node" transform="translate(998,863.2758620689656)">
+                                <rect height="25.57471264367816" width="2" style="fill: rgb(102, 102, 102);">
+                                    <title>Slovenia 5</title>
+                                </rect>
+                                <text x="-6" y="12.78735632183908" dy=".35em" text-anchor="end" style="font-size:16px; font-weight: bold; pointer-events: none;">Slovenia</text>
+                            </g>
+                            <g class="node" transform="translate(998,674.4827586206898)">
+                                <rect height="97.183908045977" width="2" style="fill: rgb(102, 102, 102);">
+                                    <title>Spain 19</title>
+                                </rect>
+                                <text x="-6" y="48.5919540229885" dy=".35em" text-anchor="end" style="font-size:16px; font-weight: bold; pointer-events: none;">Spain</text>
+                            </g>
+                            <g class="node" transform="translate(998,551.9540229885058)">
+                                <rect height="112.52873563218391" width="2" style="fill: rgb(102, 102, 102);">
+                                    <title>USA 22</title>
+                                </rect>
+                                <text x="-6" y="56.264367816091955" dy=".35em" text-anchor="end" style="font-size:16px; font-weight: bold; pointer-events: none;">USA</text>
+                            </g>
+                            <g class="node" transform="translate(0,913.8505747126436)">
+                                <rect height="30.689655172413794" width="2">
+                                    <title>Dessert 6</title>
+                                </rect>
+                                <text x="8" y="15.344827586206897" dy=".35em" text-anchor="start" style="font-size:16px; font-weight: bold; pointer-events: none;">Dessert</text>
+                            </g>
+                            <g class="node" transform="translate(0,347.01149425287355)">
+                                <rect height="194.367816091954" width="2">
+                                    <title>Orange 38</title>
+                                </rect>
+                                <text x="8" y="97.183908045977" dy=".35em" text-anchor="start" style="font-size:16px; font-weight: bold; pointer-events: none;">Orange</text>
+                            </g>
+                            <g class="node" transform="translate(0,714.8275862068965)">
+                                <rect height="143.2183908045977" width="2">
+                                    <title>Pink 28</title>
+                                </rect>
+                                <text x="8" y="71.60919540229885" dy=".35em" text-anchor="start" style="font-size:16px; font-weight: bold; pointer-events: none;">Pink</text>
+                            </g>
+                            <g class="node" transform="translate(0,551.3793103448276)">
+                                <rect height="153.44827586206895" width="2">
+                                    <title>Red 30</title>
+                                </rect>
+                                <text x="8" y="76.72413793103448" dy=".35em" text-anchor="start" style="font-size:16px; font-weight: bold; pointer-events: none;">Red</text>
+                            </g>
+                            <g class="node" transform="translate(0,868.0459770114942)">
+                                <rect height="35.804597701149426" width="2">
+                                    <title>Sherry 7</title>
+                                </rect>
+                                <text x="8" y="17.902298850574713" dy=".35em" text-anchor="start" style="font-size:16px; font-weight: bold; pointer-events: none;">Sherry</text>
+                            </g>
+                            <g class="node" transform="translate(0,954.5402298850574)">
+                                <rect height="20.45977011494253" width="2">
+                                    <title>Sparkling 4</title>
+                                </rect>
+                                <text x="8" y="10.229885057471265" dy=".35em" text-anchor="start" style="font-size:16px; font-weight: bold; pointer-events: none;">Sparkling</text>
+                            </g>
+                            <g class="node" transform="translate(0,25)">
+                                <rect height="312.01149425287355" width="2">
+                                    <title>White 61</title>
+                                </rect>
+                                <text x="8" y="156.00574712643677" dy=".35em" text-anchor="start" style="font-size:16px; font-weight: bold; pointer-events: none;">White</text>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+            </div>
         </div>
+    </div>
     </div>
     <script src="../js/jquery.min.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script> -->
