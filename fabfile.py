@@ -1,3 +1,4 @@
+import csv
 import glob
 import json
 import os
@@ -19,11 +20,10 @@ env.settings = None
 
 @task
 def get_wines():
-  gc = gspread.login(os.environ.get("GMAIL_ACCOUNT"), os.environ.get("GMAIL_PASSWORD"))
-  doc = gc.open("Cellar")
-  sh = doc.get_worksheet(0)
-  wines = sh.get_all_values()
-  return [dict(zip(wines[0], w)) for w in wines[1:]]
+    wines = []
+    with open('www/wine/wine.csv', 'r') as readfile:
+        reader = csv.DictReader(readfile)
+        return [dict(r) for r in reader]
 
 @task
 def write_wine_data():
